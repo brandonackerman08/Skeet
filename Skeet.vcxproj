@@ -78,12 +78,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gun.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="pong.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gun.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="uiDraw.h" />
