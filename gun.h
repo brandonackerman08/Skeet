@@ -17,17 +17,18 @@ public:
 	//Constructors
 	Gun();              //Default Constructor *We really don't need any
 	                    //other ones right?
+
 	void move(int up, int down); // tilt gun up or down
 	                    // (same as set angle?)
 
-	void draw()  { drawRect(gun, 10, 85, angle); }      // draw the gun
+	void draw() const { drawRect(gun, 10, 85, angle); }      // draw the gun
 
 	//Setters
 	void setGun();      // access to the gun point?
 	// i took set angle out because move does that.
 
 	//Getters
-	int getAngle() { return angle; }    // this we will need for bullet
+	int getAngle() const { return angle; }    // this we will need for bullet
 	void getGun();      // access to the point?
 
 private:
@@ -36,10 +37,12 @@ private:
 	int const MAX_TILT_UP = 90;  //maximum degrees we can rotate
 	int const MAX_TILT_DOWN = 0; // minimim degrees we can rotate
 	int static angle;                   // current angle of the gun
+	// this is static becasue we don't want anything to re-initilize angle. It stays 
+	// the same for the whole game. 
 
 	//Private member function
 	void validatePositionProc(const char * file, int line); // validate should not need any parameters 
-	                         //because "this" is implie
+	                         //because "this" is implied
 
 
 };

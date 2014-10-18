@@ -11,9 +11,9 @@
 #include "gun.h"
 
 // set the bounds of the game
-float Point::xMin = -128.0; // how do these work?
+float Point::xMin = -128.0; // These are static
 float Point::xMax = 128.0;
-float Point::yMin = -128.0;  // I thought they were private?
+float Point::yMin = -128.0;  // This is how you initilize static vars
 float Point::yMax = 128.0;
 int Gun::angle = 45;
 
@@ -37,15 +37,15 @@ void Gun::move(int up, int down)
 {
 	validatePosition(); // make sure gun is in an ok position
 
-	if (up && angle <= 90)
+	if (up && angle <= MAX_TILT_UP)
 		angle -= (up   + 9) / 5; // if up move up
-	if (down && angle >= 0)
+	if (down && angle >= MAX_TILT_DOWN)
 		angle += (down + 9) / 5; // if down move down
 
-	if (angle > 90)
-		angle = 90;
-	if (angle < 0)
-		angle = 0;
+	if (angle > MAX_TILT_UP)
+		angle = MAX_TILT_UP;
+	if (angle < MAX_TILT_DOWN)
+		angle = MAX_TILT_DOWN;
 	
 	validatePosition(); // check gun position again
 	
