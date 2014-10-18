@@ -28,6 +28,8 @@ void callBack(const Interface *pUI, void *p)
 
 	// draw it
 	pGun->draw();
+	
+	// some way to cout angle to test the getAngle function?
 }
 
 
