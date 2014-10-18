@@ -9,6 +9,7 @@
 *    as a demo for the computer systems in the Brookhaven National Laboratory.
 *    The display was a normal oscilloscope.  Ours will use slighly more
 *    advanced graphics: OpenGL
+*    Testing to see if Git changes are working!
 ***********************************************************************/
 
 #include "point.h"       // the ball has a position
@@ -18,10 +19,10 @@
 #define PADDLE 20
 
 // set the bounds of the game
-float Point::xMin = -128.0;
-float Point::xMax = 128.0;
-float Point::yMin = -128.0;
-float Point::yMax = 128.0;
+float Point::xMin = -127.0;
+float Point::xMax = 127.0;
+float Point::yMin = -127.0;
+float Point::yMax = 127.0;
 
 /*****************************************
 * PONG
@@ -71,7 +72,7 @@ Pong::Pong() : ball(), dead(false), score(0), paddle()
 void Pong::advance()
 {
 	// gravity.. just for fun!
-	//dy -= .2;
+	dy -= .2;
 
 	// woops, we missed the ball!
 	if (ball.getX() + dx > ball.getXMax() - 1.0)
