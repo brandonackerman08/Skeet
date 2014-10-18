@@ -79,8 +79,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="gun.cpp" />
+    <ClCompile Include="gunTest.cpp" />
     <ClCompile Include="point.cpp" />
-    <ClCompile Include="pong.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>

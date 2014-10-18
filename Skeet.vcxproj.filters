@@ -24,10 +24,10 @@
     <ClCompile Include="point.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pong.cpp">
+    <ClCompile Include="gun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gun.cpp">
+    <ClCompile Include="gunTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
