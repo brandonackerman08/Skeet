@@ -19,10 +19,10 @@
 #define PADDLE 20
 
 // set the bounds of the game
-float Point::xMin = -127.0;
-float Point::xMax = 127.0;
-float Point::yMin = -127.0;
-float Point::yMax = 127.0;
+float Point::xMin = -128.0;
+float Point::xMax = 128.0;
+float Point::yMin = -128.0;
+float Point::yMax = 128.0;
 
 /*****************************************
 * PONG
