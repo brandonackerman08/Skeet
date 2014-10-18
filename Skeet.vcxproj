@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bird.cpp" />
     <ClCompile Include="gun.cpp" />
     <ClCompile Include="gunTest.cpp" />
     <ClCompile Include="point.cpp" />
@@ -85,6 +86,7 @@
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bird.h" />
     <ClInclude Include="gun.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="point.h" />
