@@ -82,12 +82,14 @@
     <ClCompile Include="gun.cpp" />
     <ClCompile Include="gunTest.cpp" />
     <ClCompile Include="point.cpp" />
+    <ClCompile Include="trajectory.cpp" />
     <ClCompile Include="uiDraw.cpp" />
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bird.h" />
     <ClInclude Include="gun.h" />
+    <ClInclude Include="trajectory.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="uiDraw.h" />
