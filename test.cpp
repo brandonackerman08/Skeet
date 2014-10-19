@@ -46,6 +46,8 @@ void callBack(const Interface *pUI, void *p)
 	// bird
 	pBird->draw();
 
+	// draw it
+	pGun->draw();
 }
 
 
