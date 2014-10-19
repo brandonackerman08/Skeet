@@ -16,9 +16,11 @@ class Bird
 {
 public:
 	//Constructors
-	Bird();              //Default Constructor 
+	Bird();              //Default Constructor Don't know what this should be yet.
 
 	void move(); // uses trajectory to "move" the bird
+
+	void regenerate();  // reset the birds position and give it a random direction. 
 
 	void draw() const { drawCircle(bird, 10); }      // draw bird
 

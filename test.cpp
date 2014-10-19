@@ -7,8 +7,16 @@
 *    Code to test the gun class
 ************************************************************************/
 #include "gun.h" // gun class
+#include "bird.h" //bird classs
 #include "uiInteract.h" // OpenGL interface
 #include <iostream> // cout the angle
+
+// set the bounds of the game
+float Point::xMin = -128.0;
+float Point::xMax = 128.0;
+float Point::yMin = -128.0; // do we only need to do this once in our final
+float Point::yMax = 128.0;  // cpp file with main?
+
 /*********************************************
 * CALLBACK
 * The main interaction loop of the engine.
@@ -21,13 +29,23 @@ void callBack(const Interface *pUI, void *p)
 {
 	// we know the void pointer is our game class so
 	// cast it into the game class.
-	Gun *pGun = (Gun *)p;
 
-	// check the paddle
-	pGun->move(pUI->isUp(), pUI->isDown());
 
-	// draw it
-	pGun->draw();
+	Bird *pBird = (Bird *)p; // when testing bird
+	//Gun *pGun = (Gun *)p; when testing gun
+
+	// for testing gun
+	//pGun->move(pUI->isUp(), pUI->isDown());
+
+	// for testing bird
+	pBird->move();
+
+	// gun
+	//pGun->draw();
+
+	// bird
+	pBird->draw();
+
 }
 
 
@@ -42,8 +60,8 @@ int main(int argc, char **argv)
 	Interface ui(argc, argv, "Gun Class");
 
 	// play the game.  Our function callback will get called periodically
-	Gun gun;
-	ui.run(callBack, (void *)&gun);
-	
+	//Gun gun;
+	Bird bird;
+	ui.run(callBack, (void *)&bird);
 	return 0;
 }

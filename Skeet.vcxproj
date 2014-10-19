@@ -80,7 +80,7 @@
   <ItemGroup>
     <ClCompile Include="bird.cpp" />
     <ClCompile Include="gun.cpp" />
-    <ClCompile Include="gunTest.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="trajectory.cpp" />
     <ClCompile Include="uiDraw.cpp" />

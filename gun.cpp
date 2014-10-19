@@ -10,11 +10,6 @@
 #include <cstdlib> // for exit in validate
 #include "gun.h"
 
-// set the bounds of the game
-float Point::xMin = -128.0; // These are static
-float Point::xMax = 128.0;
-float Point::yMin = -128.0;  // This is how you initilize static vars
-float Point::yMax = 128.0;
 int Gun::angle = 45;
 
 /***********************************************************************

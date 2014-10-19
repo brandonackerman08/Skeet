@@ -10,11 +10,6 @@
 #include <cstdlib> // for exit in validate
 #include "bird.h"
 
-// set the bounds of the game
-float Point::xMin = -128.0; 
-float Point::xMax = 128.0;
-float Point::yMin = -128.0; // do we only need to do this once in our final
-float Point::yMax = 128.0;  // cpp file with main?
 
 /***********************************************************************
 * Bird
@@ -22,14 +17,20 @@ float Point::yMax = 128.0;  // cpp file with main?
 ************************************************************************/
 Bird::Bird()
 {
-	bird.setX(bird.getXMin - 1);
-	bird.setY(random(bird.getYMin(), bird.getYMax());
-	if (bird.getY() < 0)
-		trajectory.setDy() = random(0, 4);
-	else
-		trajectory.setDx() = random(-4, 0);
+	//validatePosition();
+}
 
-	validatePosition();
+void Bird::regenerate()
+{
+	bird.setX(bird.getXMin() - 1);
+	bird.setY(random(bird.getYMin(), bird.getYMax()));
+	trajectory.setDX(random(3, 6));
+
+	if (bird.getY() < 0)
+		trajectory.setDY(random(0, 4));
+	else
+		trajectory.setDY(random(-4, 0));
+	bird.resurrect();
 }
 
 /***********************************************************************
@@ -38,7 +39,7 @@ Bird::Bird()
 ************************************************************************/
 void Bird::move()
 {
-	validatePosition(); // make sure bird is in an ok position
+	validatePosition(); // find out where bird is.
 
 	if (bird.isDead())
 	{
@@ -47,15 +48,15 @@ void Bird::move()
 		// we happen to generate 0 as a random number. therefore we are going to be makeing it so that
 		// the bird will always pause roughly between 0 and 1 second before emerging. 
 		if (0 == random(0, 30)); 
-		// make the bird class fall out  of scope so we call another?
+			regenerate();
 	}
 
 	else
 	{
-		bird.addX(trajectory.getDx());
-		bird.addY(trajectory.getDy());
+		bird.addX(trajectory.getDX());
+		bird.addY(trajectory.getDY());
 	}
-	validatePosition(); // check bird position again
+	//validatePosition(); // check bird position again
 
 }
 
@@ -65,15 +66,17 @@ void Bird::move()
 ************************************************************************/
 void Bird::validatePositionProc(const char * file, int line)
 {
-	char something;
+	//char something;
 
-	if ()//something has gone horribly wrong)
+	if (bird.getX() > bird.getXMax() || bird.getY() > bird.getYMax()
+		|| bird.getX() < bird.getXMin() || bird.getY() < bird.getYMin())
 	{
-
-		std::cerr << "Error in file: " << file << " at line: " << line << ".\n"
-			<< "this thing: " << thing << " is outside valid range\n";
-		std::cin >> something;
-		exit(1);
+		bird.kill();
 	}
+
+	//std::cerr << "Error in file: " << file << " at line: " << line << ".\n"
+	//<< "this thing: " << thing << " is outside valid range\n";
+	//std::cin >> something;
+	//exit(1);
 
 }

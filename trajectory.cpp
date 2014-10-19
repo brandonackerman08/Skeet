@@ -7,7 +7,7 @@
 *     This is the cpp file for the trajectory class.
 ***************************************************************/
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "Trajectory.h"
 
 

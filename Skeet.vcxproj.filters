@@ -27,13 +27,13 @@
     <ClCompile Include="gun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gunTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="bird.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="trajectory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
