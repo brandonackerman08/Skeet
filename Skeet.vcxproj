@@ -79,7 +79,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bird.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="gun.cpp" />
+    <ClCompile Include="skeet.cpp" />
+    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="trajectory.cpp" />
@@ -87,9 +90,12 @@
     <ClCompile Include="uiInteract.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Documents\Visual Studio 2013\Projects\ConsoleApplication3\ConsoleApplication3\bullet.h" />
     <ClInclude Include="bird.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="gun.h" />
+    <ClInclude Include="glDefines.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="skeet.h" />
     <ClInclude Include="trajectory.h" />
     <ClInclude Include="uiInteract.h" />
     <ClInclude Include="point.h" />
