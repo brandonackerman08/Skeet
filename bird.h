@@ -16,7 +16,7 @@ class Bird
 {
 public:
 	//Constructors
-	Bird();              //Default Constructor Don't know what this should be yet.
+	Bird();              //Default Constructor Don't know what this should be yet. Hello
 
 	void move(); // uses trajectory to "move" the bird
 
