@@ -34,20 +34,18 @@ void callBack(const Interface *pUI, void *p)
 	Bird *pBird = (Bird *)p; // when testing bird
 	//Gun *pGun = (Gun *)p; when testing gun
 
-	// for testing gun
+	// gun move
 	//pGun->move(pUI->isUp(), pUI->isDown());
 
-	// for testing bird
+	//  bird move
 	pBird->move();
 
-	// gun
-	//pGun->draw();
 
 	// bird
 	pBird->draw();
 
-	// draw it
-	pGun->draw();
+	// gun draw
+	//pGun->draw();
 }
 
 

@@ -25,20 +25,20 @@ public:
 	//Trajectory will set everything to 0 unless specified. 
 	//x and y can be specified, or x, y, dx, and dy.
 	Trajectory() : dx(0), dy(0)  { }
-	Trajectory(float x, float y, int dx = 0, int dy = 0);
+	Trajectory(float x, float y, float dx = 0, float dy = 0);
 	~Trajectory()   { }
 
 	//getters
 	float getX()   const            { return point.getX(); }
 	float getY()   const            { return point.getY(); }
 	int getDX()    const            { return dx; }
-	int getDY()    const            { return dx; }
+	int getDY()    const            { return dy; }
 
 	//setters
 	void setX(float x)              { point.setX(x); }
 	void setY(float y)              { point.setY(y); }
-	void setDX(int dx)              { this->dx = dx; }
-	void setDY(int dy)              { this->dy = dy; }
+	void setDX(float dx)              { this->dx = dx; }
+	void setDY(float dy)              { this->dy = dy; }
 
 private:
 	Point point;

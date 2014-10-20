@@ -30,7 +30,11 @@ public:
 
 private:
 	//Private Member Variables 
+
 	Point bird;               //position of the bird
+	// when Point bird is created the constructor is imediately called. This makes the 
+	// bird alwasy in the middle of the screen....
+
 	Trajectory trajectory; // direction and velosity of bird
 
 	//Private member function

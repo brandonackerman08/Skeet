@@ -7,7 +7,7 @@
 *     This is the cpp file for the trajectory class.
 ***************************************************************/
 
-//#include "stdafx.h"
+//#include "stdafx.h" what was this?
 #include "Trajectory.h"
 
 
@@ -17,7 +17,7 @@
 * dy having default values. Most won't use the default values,
 * but they are there.
 ***************************************************************/
-Trajectory::Trajectory(float x, float y, int dx, int dy)
+Trajectory::Trajectory(float x, float y, float dx, float dy)
 {
 	this->point.setX(x);
 	this->point.setY(y);
