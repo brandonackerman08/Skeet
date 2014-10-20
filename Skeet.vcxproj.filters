@@ -56,5 +56,8 @@
     <ClInclude Include="trajectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Documents\Visual Studio 2013\Projects\ConsoleApplication3\ConsoleApplication3\bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
