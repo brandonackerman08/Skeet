@@ -9,7 +9,7 @@
 
 #include "point.h" // access to point class
 #include "uiDraw.h" // draw rectangle
-#include "trajectory.h"
+#include "trajectory.h" // so the bird can move
 #define validatePosition() validatePositionProc(__FILE__ , __LINE__)
 
 class Bird
@@ -24,22 +24,15 @@ public:
 
 	void draw() const { drawCircle(bird, 10); }      // draw bird
 
-	// so isdead is accessed through point. dx and dy will be accessed through trajectory
-	// and the bird's location is also stored in point. we really only need two member 
-	// functions plus the constructor and validate yes?
-
 private:
 	//Private Member Variables 
 
 	Point bird;               //position of the bird
-	// when Point bird is created the constructor is imediately called. This makes the 
-	// bird alwasy in the middle of the screen....
 
 	Trajectory trajectory; // direction and velosity of bird
 
 	//Private member function
-	void validatePositionProc(const char * file, int line); // validate should not need any parameters 
-	//because "this" is implied
+	void validatePositionProc(const char * file, int line); 
 
 
 };

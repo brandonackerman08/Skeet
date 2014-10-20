@@ -23,22 +23,22 @@ Bird::Bird()
 
 void Bird::regenerate()
 {
-	bird.resurrect();
+	bird.resurrect(); // revive dead bird
 
-	bird.setX(bird.getXMin());
-	bird.setY((float)random(bird.getYMin(), bird.getYMax()));
-	trajectory.setDX((float)random(3, 6));
+	bird.setX(bird.getXMin()); // put bird at xMin and at...
+	bird.setY((float)random(bird.getYMin(), bird.getYMax())); // random y axis 
+	trajectory.setDX((float)random(3, 6)); // speed (dx) random between 3 and 6
 
 	if (bird.getY() > 0)
 	{
 		//std::cout << "greater than 0 and: " << trajectory.getDY() << " \n";
-		trajectory.setDY((float)random(0, 4));
+		trajectory.setDY((float)random(-4, 0)); // if bird is on top half send it downward
 	}
 		
 	else
 	{
 		//std::cout << "less than 0 and: " << trajectory.getDY() << " \n";
-		trajectory.setDY((float)random(-4, 4));
+		trajectory.setDY((float)random(0, 4)); // else send it upward 
 	}
 	
 }
@@ -46,6 +46,11 @@ void Bird::regenerate()
 /***********************************************************************
 * Move
 * Move our bird across the screen. 
+* in the else we are generating a random number between 1 and 30 each time 
+* this function is called this way we have a 1 in 30 chance it will be equal 
+* to zero. the bird wont regenerate until we happen to generate 0 as a 
+* random number. therefore we are going to be makeing it so that
+* the bird will always pause roughly between 0 and 1 second before emerging.
 ************************************************************************/
 void Bird::move()
 {
@@ -57,10 +62,7 @@ void Bird::move()
 		bird.addY(trajectory.getDY());
 		validatePosition();
 	}
-		// here we are generating a random number between 1 and 30 each time this function is called
-		// this way we have a 1 in 30 chance it will be equal to zero. the bird wont regenerate until
-		// we happen to generate 0 as a random number. therefore we are going to be makeing it so that
-		// the bird will always pause roughly between 0 and 1 second before emerging. 
+
 	else
 	{
 		if (0 == random(0, 30))
