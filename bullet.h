@@ -14,12 +14,13 @@
 #define BULLET_H
 
 #include <math.h>
+#include "trajectory.h"
 
 class Bullet
 {
 public:
 	//initializer
-	Bullet();
+	Bullet() {}
 
 	void move();
 	void draw();
@@ -34,13 +35,15 @@ public:
 	//sets trajectory of the bullet equal to a given angle 
 	Bullet & operator = (const int & rhs)
 	{
-		trajectory.setDX(- 10 * (int)acos(rhs));
-		trajectory.setDY(10 * (int)asin(rhs));
+		trajectory.setDX(- 10 * acos(rhs));
+		trajectory.setDY(10 * asin(rhs));
+
+		return *this;
 	}
 
 	//the is equals operator, only compared the dx and dy
 	//member variables in trajectory
-	bool operator == (const int & rhs)
+	bool operator == (const float & rhs)
 	{
 		return (trajectory.getDX() == rhs && trajectory.getDY() == rhs);
 	}

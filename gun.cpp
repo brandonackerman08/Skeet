@@ -28,7 +28,7 @@ Gun::Gun()
 * Take in to account if the up or down arrow is pressed and move gun
 * accordingly.
 ************************************************************************/
-void Gun::move(int up, int down)
+void Gun::move(int up, int down, int left, int right)
 {
 	validatePosition(); // make sure gun is in an ok position
 
@@ -36,6 +36,11 @@ void Gun::move(int up, int down)
 		angle -= (up   + 9) / 5; // if up move up
 	if (down && angle >= MAX_TILT_DOWN)
 		angle += (down + 9) / 5; // if down move down
+
+	if (right && angle <= MAX_TILT_UP)
+		angle -= (right + 9) / 5; // same as up
+	if (left && angle >= MAX_TILT_DOWN)
+		angle += (left + 9) / 5; // same as down
 
 	if (angle > MAX_TILT_UP)
 		angle = MAX_TILT_UP;

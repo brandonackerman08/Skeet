@@ -13,15 +13,6 @@
 #include "bullet.h"
 #include "glDefines.h"
 
-/*****************************************************************
-* I'm pretty sure the destructor would be inherently created,
-* but to be sure, I just made it. It doesn't do anything in
-* particular. Just makes sure it gets deleted.
-*****************************************************************/
-Bullet::~Bullet()
-{
-}
-
 /********************************************************************
 * Basically uninitallizes a bullets. Sends it back into the gun.
 * it's in the gun if dx and dy are 0.0

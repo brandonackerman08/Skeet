@@ -46,8 +46,8 @@ void Skeet::setIsHit()
 		forBird.setY(bird.getY());
 
 		Trajectory forBullet;
-		forBullet.setX(bullets[i].getX);
-		forBullet.setY(bullets[i].getY);
+		forBullet.setX(bullets[i].getX());
+		forBullet.setY(bullets[i].getY());
 
 		if (getDistance(forBird, forBullet) < 10)
 		{
@@ -86,10 +86,10 @@ void Skeet::killBullet(const int i)
 * newBullet will put a bullet onto the screen. It does this
 * by setting dx and dy in the trajectory of the bullet.
 *************************************************************/
-void Skeet::newBullet(bool isSpace)
+void Skeet::newBullet(bool space)
 {
 	bool isSpace = true;
-	for (int i = 0; isSpace; i++)
+	for (int i = 0; space; i++)
 	{
 		//If 0, bullet isn't moving. Means it hasn't been initiallized. 
 		if (bullets[i] == 0)

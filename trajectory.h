@@ -56,6 +56,8 @@ public:
 	void kill()              { dead = true; }
 	void resurrect()         { dead = false; }
 
+	Trajectory & operator = (const Trajectory & rhs);
+
 private:
 	float x;           // horizontal position
 	float y;           // vertical position

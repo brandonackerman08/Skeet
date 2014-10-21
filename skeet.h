@@ -15,7 +15,7 @@ public:
 	void move();
 	void interact(int up, int down, int left, int right);
 	void newBird();
-	void newBullet(bool isSpace);
+	void newBullet(bool space);
 	void killBird();                //kills the bird
 	void killBullet(const int i);   //kills the bullet. Tracks which bullet.
 	float getDistance(const Trajectory & trajectory1, const Trajectory & trajectory2);
