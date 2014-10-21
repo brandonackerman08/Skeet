@@ -21,19 +21,29 @@ public:
 	//initializer
 	Bullet();
 
-	//destroy them
-	~Bullet();
-
-	//the move and draw functions
-	//they move and draw the bullet. Revolutionary
-	void move(int enter);
+	void move();
 	void draw();
 
-	//makes it so you can set the trajectory for your
-	//bullet. Only needs the angle of the gun.
-	void setTrajectory(float angle);
-	void setTrajectory(float dx = 0.0, float dy = 0.0);
-	Trajectory getTrajectory()  { return trajectory; }
+	//getters to the trajectory
+	float getX()  { return trajectory.getX(); }
+	float getY()  { return trajectory.getY(); }
+
+	//kills the bullet. Sends it back to where it came from
+	void resetBullet(float dx = 0.0, float dy = 0.0);
+
+	//sets trajectory of the bullet equal to a given angle 
+	Bullet & operator = (const int & rhs)
+	{
+		trajectory.setDX(- 10 * (int)acos(rhs));
+		trajectory.setDY(10 * (int)asin(rhs));
+	}
+
+	//the is equals operator, only compared the dx and dy
+	//member variables in trajectory
+	bool operator == (const int & rhs)
+	{
+		return (trajectory.getDX() == rhs && trajectory.getDY() == rhs);
+	}
 
 private:
 	Trajectory trajectory;

@@ -19,8 +19,16 @@
 ***************************************************************/
 Trajectory::Trajectory(float x, float y, float dx, float dy)
 {
-	this->point.setX(x);
-	this->point.setY(y);
+	this->setX(x);
+	this->setY(y);
 	this->dx = dx;
 	this->dy = dy;
+}
+
+Trajectory & Trajectory::operator=(const Trajectory & rhs)
+{
+	setX(rhs.getX());
+	setY(rhs.getY());
+	setDX(rhs.getDX());
+	setDY(rhs.getDY());
 }

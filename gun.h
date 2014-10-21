@@ -18,7 +18,7 @@ public:
 	Gun();              //Default Constructor *We really don't need any
 	                    //other ones right?
 
-	void move(int up, int down); // tilt gun up or down
+	void move(int up, int down, int left, int right); // tilt gun up or down
 	                    // (same as set angle?)
 
 	void draw() const { drawRect(gun, 10, 85, angle); }      // draw the gun

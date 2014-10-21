@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "skeet.h"
+#include <cstdlib>
 
 
 Skeet::Skeet()
@@ -40,37 +41,45 @@ void Skeet::setIsHit()
 {
 	for (int i = 0; i < 5; i++)
 	{
-		if (getDistance(bullets[i].getTrajectory().getPoint(),
-			bird.getTrajectory().getPoint()) < 20)
+		Trajectory forBird;
+		forBird.setX(bird.getX());
+		forBird.setY(bird.getY());
+
+		Trajectory forBullet;
+		forBullet.setX(bullets[i].getX);
+		forBullet.setY(bullets[i].getY);
+
+		if (getDistance(forBird, forBullet) < 10)
 		{
 			isHit = true;
 			killBird();
-			killBullet();
+			killBullet(i);
 		}
 	}
 }
 
 void Skeet::newBird()
 {
-	bird.Bird();
+	int randNum = rand() % 30;
+
+	if (randNum == 0)
+		bird.regenerate();
 }
 
 void Skeet::killBird()
 {
-	bird.~Bird();
+
 }
 
-void Skeet::killBullet()
+/**********************************************************
+* killBullet will reset the bullet back to an initial 
+* position without any direction. Once it is fired, 
+* it will be given direction and magnitude, oh yeah.
+**********************************************************/
+void Skeet::killBullet(const int i)
 {
-	for (int i = 0; isHit; i++)
-	{
-		if (getDistance(bullets[i].getTrajectory().getPoint(),
-			bird.getTrajectory().getPoint()) < 20)
-		{
-			bullets[i].setTrajectory();
-			isHit = false;
-		}
-	}
+	bullets[i].resetBullet();
+	isHit = false;                //resets bullet that hit bird
 }
 
 /*************************************************************
@@ -82,12 +91,11 @@ void Skeet::newBullet(bool isSpace)
 	bool isSpace = true;
 	for (int i = 0; isSpace; i++)
 	{
-		//checks to see if dx is zero. If bullet isn't moving, that 
-		//means it has not been initiallized.
-		if (bullets[i].getTrajectory().getDX == 0)
+		//If 0, bullet isn't moving. Means it hasn't been initiallized. 
+		if (bullets[i] == 0)
 		{
-			bullets[i].setTrajectory(gun.getAngle());  //might need to be changed once I see the gun class. 
-			isSpace = false;
+			bullets[i] = deg2rad(gun.getAngle());  //sets trajectory
+			isSpace = false;                       //from gun angle
 		}
 	}
 }
@@ -97,10 +105,10 @@ void Skeet::newBullet(bool isSpace)
 * I know this is not very cohesive, it's coupling. But
 * math.h didn't have the function I needed.
 *************************************************************/
-float Skeet::getDistance(const Point point1, const Point point2)
+float Skeet::getDistance(const Trajectory & trajectory1, const Trajectory & trajectory2)
 {
-	float xDif = point1.getX() + point2.getX();
-	float yDif = point1.getY() + point2.getY();
+	float xDif = trajectory1.getX() - trajectory2.getX();
+	float yDif = trajectory1.getY() + trajectory2.getY();
 
 	float sumSquares = powf(xDif, 2) + powf(yDif, 2);
 

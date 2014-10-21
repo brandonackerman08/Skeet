@@ -4,7 +4,7 @@
 * Author:
 *    Robbie Bise and Brandon Ackerman
 * Summary:
-*    Declairations for the bird class for our skeet game
+*    Declarations for the bird class for our skeet game
 ************************************************************************/
 
 #include "point.h" // access to point class
@@ -24,12 +24,19 @@ public:
 
 	void draw() const { drawCircle(bird, 10); }      // draw bird
 
+	//getters to the trajectory
+	float getX()  { return trajectory.getX(); }
+	float getY()  { return trajectory.getY(); }
+	//needed some getters to compare the distance
+	//between bullet and bird
+
+
 private:
 	//Private Member Variables 
 
 	Point bird;               //position of the bird
 
-	Trajectory trajectory; // direction and velosity of bird
+	Trajectory trajectory; // direction and velocity of bird
 
 	//Private member function
 	void validatePositionProc(const char * file, int line); 

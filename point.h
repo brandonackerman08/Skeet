@@ -12,6 +12,7 @@
 #define POINT_H
 
 #include <iostream> // needed for insertion and extraction operator
+#include "stdafx.h"
 /*********************************************
 * POINT
 * A single position.

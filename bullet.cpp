@@ -22,29 +22,16 @@ Bullet::~Bullet()
 {
 }
 
-
-/********************************************************************
-* setTrajectory will set the position and rate of change for the
-* bullet. Since Trajectory is a class all on its own, there are
-* member functions from Trajectory that are called in order to set
-* the Trajectory. I like saying Trajectory.
-********************************************************************/
-void Bullet::setTrajectory(float angle)
-{
-	trajectory.setDX(10 * (int)acos(angle));
-	trajectory.setDY(10 * (int)asin(angle));
-}
-
 /********************************************************************
 * Basically uninitallizes a bullets. Sends it back into the gun.
 * it's in the gun if dx and dy are 0.0
 ********************************************************************/
-void Bullet::setTrajectory(float dx, float dy)
+void Bullet::resetBullet(float dx, float dy)
 {
 	trajectory.setDX(dx);
 	trajectory.setDY(dy);
-	trajectory.setX(trajectory.getPoint().getXMin());
-	trajectory.setY(trajectory.getPoint().getYMin());
+	trajectory.setX(trajectory.getXMax());
+	trajectory.setY(trajectory.getYMin());
 }
 
 /***************************************************************

@@ -1,6 +1,10 @@
 #ifndef SKEET_H
 #define SKEET_H
 
+#include "bird.h"
+#include "bullet.h"
+#include "gun.h"
+
 class Skeet
 {
 public:
@@ -12,9 +16,9 @@ public:
 	void interact(int up, int down, int left, int right);
 	void newBird();
 	void newBullet(bool isSpace);
-	void killBird();       //kills the bird
-	void killBullet();     //kills the bullet
-	float getDistance(const Point point1, const Point point2);
+	void killBird();                //kills the bird
+	void killBullet(const int i);   //kills the bullet. Tracks which bullet.
+	float getDistance(const Trajectory & trajectory1, const Trajectory & trajectory2);
 
 private:
 	int score;

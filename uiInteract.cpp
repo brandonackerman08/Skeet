@@ -15,6 +15,7 @@
 #include <cassert>    // I feel the need... the need for asserts
 #include <time.h>     // for clock
 #include <cstdlib>    // for rand()
+#include "stdafx.h"
 
 
 //#define LINUX
