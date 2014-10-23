@@ -33,10 +33,10 @@ public:
 	void resetBullet(float dx = 0.0, float dy = 0.0);
 
 	//sets trajectory of the bullet equal to a given angle 
-	Bullet & operator = (const int & rhs)
+	Bullet & operator = (const float & rhs)
 	{
-		trajectory.setDX(- 10 * acos(rhs));
-		trajectory.setDY(10 * asin(rhs));
+		trajectory.setDX((float) - 10 * acos(rhs));
+		trajectory.setDY((float) 10 * asin(rhs));
 
 		return *this;
 	}
@@ -45,7 +45,7 @@ public:
 	//member variables in trajectory
 	bool operator == (const float & rhs)
 	{
-		return (trajectory.getDX() == rhs && trajectory.getDY() == rhs);
+		return (trajectory.getDX() == rhs || trajectory.getDY() == rhs);
 	}
 
 private:

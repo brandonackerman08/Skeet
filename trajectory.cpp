@@ -8,7 +8,7 @@
 ***************************************************************/
 
 //#include "stdafx.h" what was this?
-#include "Trajectory.h"
+#include "trajectory.h"
 
 
 /***************************************************************
@@ -31,4 +31,6 @@ Trajectory & Trajectory::operator=(const Trajectory & rhs)
 	setY(rhs.getY());
 	setDX(rhs.getDX());
 	setDY(rhs.getDY());
+
+	return *this;
 }

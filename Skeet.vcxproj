@@ -100,9 +100,10 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="skeet.h" />
-    <ClInclude Include="trajectory.h" />
+    <ClInclude Include="trajectory.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="uiInteract.h" />
-    <ClInclude Include="point.h" />
     <ClInclude Include="uiDraw.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

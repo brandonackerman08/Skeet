@@ -16,7 +16,6 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-#include "point.h"
 #include <math.h>
 
 #define deg2rad(value) ((M_PI / 180) * (value))
