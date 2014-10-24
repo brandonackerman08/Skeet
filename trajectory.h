@@ -27,7 +27,11 @@ public:
 	//Trajectory will set everything to 0 unless specified. 
 	//x and y can be specified, or x, y, dx, and dy.
 	Trajectory() : dx(0.0), dy(0.0)  { }
+	Trajectory(bool check) :x(0.0), y(0.0),
+		check(check), dead(false), wrap(false)   {}
+
 	Trajectory(float x, float y, float dx = 0, float dy = 0);
+	Trajectory(Trajectory & trajectory);
 	~Trajectory()   { }
 
 	//getters
@@ -44,18 +48,26 @@ public:
 	bool  getWrap()    const { return wrap; }
 
 	//setters
-	void setX(float x)       { this->x = x; }
-	void setY(float y)       { this->y = y; }
-	void setDX(float dx)     { this->dx = dx; }
-	void setDY(float dy)     { this->dy = dy; }
-	void addX(float dx)      { setX(getX() + dx); }
-	void addY(float dy)      { setY(getY() + dy); }
-	void setCheck(bool f)    { check = f; }
-	void setWrap(bool f)     { wrap = f; }
-	void kill()              { dead = true; }
-	void resurrect()         { dead = false; }
+	void setX(float x)			 { this->x = x; }
+	void setY(float y)			 { this->y = y; }
+	void setDX(float dx)		 { this->dx = dx; }
+	void setDY(float dy)         { this->dy = dy; }
+	void setTrajectory(int angle)
+	{
+		dx = cos(deg2rad(angle));
+		dy = sin(deg2rad(angle));
+	}
+	void addX(float dx)			 { setX(getX() + dx); }
+	void addY(float dy)			 { setY(getY() + dy); }
+	void setCheck(bool f)		 { check = f; }
+	void setWrap(bool f)		 { wrap = f; }
+	void kill()					 { dead = true; }
+	void resurrect()			 { dead = false; }
 
-	Trajectory & operator = (const Trajectory & rhs);
+	bool operator == (const Trajectory & rhs) const
+	{
+		return ((x == rhs.x) && (y == rhs.y) && (dx == rhs.dx) && (dy == rhs.dy));
+	}
 
 private:
 	float x;           // horizontal position

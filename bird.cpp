@@ -23,13 +23,13 @@ Bird::Bird()
 
 void Bird::regenerate()
 {
-	bird.resurrect(); // revive dead bird
+	trajectory.resurrect(); // revive dead bird
 
-	bird.setX(bird.getXMin()); // put bird at xMin and at...
-	bird.setY((float)random(bird.getYMin(), bird.getYMax())); // random y axis 
+	trajectory.setX(trajectory.getXMin()); // put bird at xMin and at...
+	trajectory.setY((float)random(trajectory.getYMin(), trajectory.getYMax())); // random y axis 
 	trajectory.setDX((float)random(3, 6)); // speed (dx) random between 3 and 6
 
-	if (bird.getY() > 0)
+	if (trajectory.getY() > 0)
 	{
 		//std::cout << "greater than 0 and: " << trajectory.getDY() << " \n";
 		trajectory.setDY((float)random(-4, 0)); // if bird is on top half send it downward
@@ -56,10 +56,10 @@ void Bird::move()
 {
 	validatePosition(); // find out where bird is.
 
-	if (!bird.isDead())
+	if (!trajectory.isDead())
 	{
-		bird.addX(trajectory.getDX());
-		bird.addY(trajectory.getDY());
+		trajectory.addX(trajectory.getDX());
+		trajectory.addY(trajectory.getDY());
 		validatePosition();
 	}
 
@@ -83,10 +83,10 @@ void Bird::validatePositionProc(const char * file, int line)
 
 	// here I have added 20 to the max and subtracted 20 to the min to
 	// get the bird to fly off screen. is there a better way we could do this?
-	if (bird.getX() > bird.getXMax() + 20 || bird.getY() > bird.getYMax() + 20
-		|| bird.getX() < bird.getXMin() - 20 || bird.getY() < bird.getYMin() - 20)
+	if (trajectory.getX() > trajectory.getXMax() + 20 || trajectory.getY() > trajectory.getYMax() + 20
+		|| trajectory.getX() < trajectory.getXMin() - 20 || trajectory.getY() < trajectory.getYMin() - 20)
 	{
-		bird.kill();
+		trajectory.kill();
 	}
 
 	//std::cerr << "Error in file: " << file << " at line: " << line << ".\n"
@@ -94,4 +94,21 @@ void Bird::validatePositionProc(const char * file, int line)
 	//std::cin >> something;
 	//exit(1);
 
+}
+
+void Bird::draw(const Trajectory & center, int radius) const
+{
+	assert(radius > 1.0);
+	const double increment = 1.0 / (double)radius;
+
+	// begin drawing
+	glBegin(GL_LINE_LOOP);
+
+	// go around the circle
+	for (double radians = 0; radians < M_PI * 2.0; radians += increment)
+		glVertex2f(center.getX() + (radius * cos(radians)),
+		center.getY() + (radius * sin(radians)));
+
+	// complete drawing
+	glEnd();
 }

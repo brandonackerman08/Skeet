@@ -25,27 +25,12 @@ public:
 	void move();
 	void draw();
 
-	//getters to the trajectory
-	float getX()  { return trajectory.getX(); }
-	float getY()  { return trajectory.getY(); }
-
 	//kills the bullet. Sends it back to where it came from
 	void resetBullet(float dx = 0.0, float dy = 0.0);
 
-	//sets trajectory of the bullet equal to a given angle 
-	Bullet & operator = (const float & rhs)
+	void getTrajectory(Trajectory & trajectory)
 	{
-		trajectory.setDX((float) - 10 * acos(rhs));
-		trajectory.setDY((float) 10 * asin(rhs));
-
-		return *this;
-	}
-
-	//the is equals operator, only compared the dx and dy
-	//member variables in trajectory
-	bool operator == (const float & rhs)
-	{
-		return (trajectory.getDX() == rhs || trajectory.getDY() == rhs);
+		Trajectory(trajectory);
 	}
 
 private:

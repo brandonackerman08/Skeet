@@ -19,21 +19,15 @@ public:
 	                    //other ones right?
 
 	void move(int up, int down, int left, int right); // tilt gun up or down
-	                    // (same as set angle?)
 
-	void draw() const { drawRect(gun, 10, 85, angle); }      // draw the gun
-
-	//Setters
-	void setGun();      // access to the gun point?
-	// i took set angle out because move does that.
+	void draw(int width, int height) const;     // draw the gun
 
 	//Getters
 	int getAngle() const { return angle; }    // this we will need for bullet
-	void getGun();      // access to the point?
 
 private:
 	//Private Member Variables 
-	Point gun;               //position of the gun. Should this also be const?
+	Trajectory trajectory;
 	int const MAX_TILT_UP = 90;  //maximum degrees we can rotate
 	int const MAX_TILT_DOWN = 0; // minimim degrees we can rotate
 	int static angle;                   // current angle of the gun
@@ -43,6 +37,4 @@ private:
 	//Private member function
 	void validatePositionProc(const char * file, int line); // validate should not need any parameters 
 	                         //because "this" is implied
-
-
 };

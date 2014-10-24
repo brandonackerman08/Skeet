@@ -9,6 +9,7 @@
 
 //#include "stdafx.h" what was this?
 #include "trajectory.h"
+#include <math.h>
 
 
 /***************************************************************
@@ -23,6 +24,17 @@ Trajectory::Trajectory(float x, float y, float dx, float dy)
 	this->setY(y);
 	this->dx = dx;
 	this->dy = dy;
+}
+
+Trajectory::Trajectory(Trajectory & rhs)
+{
+	x = rhs.x;
+	y = rhs.y;
+	dx = rhs.dx;
+	dy = rhs.dy;
+	check = rhs.check;
+	dead = rhs.dead;
+	wrap = rhs.wrap;
 }
 
 Trajectory & Trajectory::operator=(const Trajectory & rhs)

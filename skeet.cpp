@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "skeet.h"
+#include <algorithm>
 #include <cstdlib>
+using namespace std;
 
 
 Skeet::Skeet()
@@ -24,9 +26,9 @@ void Skeet::move()
 
 void Skeet::draw()
 {
-	bird.draw();
+	bird.draw(10);
 
-	gun.draw();
+	gun.draw(5,20);
 
 	for (int i = 0; i < 5; i++)
 		bullets[i].draw();
@@ -42,12 +44,10 @@ void Skeet::setIsHit()
 	for (int i = 0; i < 5; i++)
 	{
 		Trajectory forBird;
-		forBird.setX(bird.getX());
-		forBird.setY(bird.getY());
+		bird.getTrajectory(forBird);
 
 		Trajectory forBullet;
-		forBullet.setX(bullets[i].getX());
-		forBullet.setY(bullets[i].getY());
+		bullets[i].getTrajectory(forBullet);
 
 		if (getDistance(forBird, forBullet) < 10)
 		{
@@ -56,14 +56,6 @@ void Skeet::setIsHit()
 			killBullet(i);
 		}
 	}
-}
-
-void Skeet::newBird()
-{
-	int randNum = rand() % 30;
-
-	if (randNum == 0)
-		bird.regenerate();
 }
 
 void Skeet::killBird()
@@ -91,8 +83,11 @@ void Skeet::newBullet(bool space)
 	bool isSpace = true;
 	for (int i = 0; space; i++)
 	{
+		Trajectory bulletTrajectory;     //the getTrajectory function needs 
+		bullets[i].getTrajectory(bulletTrajectory);//to be passed by reference
+
 		//If 0, bullet isn't moving. Means it hasn't been initiallized. 
-		if (bullets[i] == 0)
+		if (bulletTrajectory == 0)
 		{
 			bullets[i] = deg2rad(gun.getAngle());  //sets trajectory
 			isSpace = false;                       //from gun angle
@@ -105,12 +100,30 @@ void Skeet::newBullet(bool space)
 * I know this is not very cohesive, it's coupling. But
 * math.h didn't have the function I needed.
 *************************************************************/
-float Skeet::getDistance(const Trajectory & trajectory1, const Trajectory & trajectory2)
+float Skeet::getDistance(const Trajectory & rhs, const Trajectory & lhs)
 {
-	float xDif = trajectory1.getX() - trajectory2.getX();
-	float yDif = trajectory1.getY() + trajectory2.getY();
+	float dxdy[4];
+	dxdy[0] = rhs.getDX();
+	dxdy[1] = rhs.getDY();
+	dxdy[2] = lhs.getDX();
+	dxdy[3] = lhs.getDY();
 
-	float sumSquares = powf(xDif, 2) + powf(yDif, 2);
+	float m = 1 / *max_element(dxdy, dxdy + 4);
 
-	return sqrtf(sumSquares);
+	float minDist = 20;   //just a distance greater than what kills a bird
+
+	for (float i = 0; i < 1; i += m)
+	{
+		float xDif = (rhs.getX() + (rhs.getDX() * i)) - 
+			         (lhs.getX() + (lhs.getDX() * i));
+
+		float yDif = (rhs.getY() + (rhs.getDY() * i)) - 
+			         (lhs.getY() + (lhs.getDY() * i));
+
+		float dist = sqrtf((xDif * xDif + yDif * yDif));    //root sum squares
+
+		minDist = min(minDist, dist);                       //checks minDist against current distance
+	}
+
+	return minDist;
 }

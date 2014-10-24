@@ -7,7 +7,6 @@
 *     Brandon Ackerman
 * Description:
 *      This is really just the #includes for the openGL library.
-*      I didn't want to have to
 ***************************************************************/
 
 //#define LINUX

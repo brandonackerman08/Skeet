@@ -15,12 +15,8 @@ public:
 	void move();
 	void interact(int up, int down, int left, int right);
 	void newBullet(bool space);
-	inline void killBird()
-	{
-		bird.
-	}//kills the bird
+	inline void killBird() { bird.kill(); } //kills the bird
 	void killBullet(const int i);   //kills the bullet. Tracks which bullet.
-	
 
 private:
 	int score;
@@ -28,7 +24,7 @@ private:
 	Bullet bullets[5];
 	Bird bird;
 	Gun gun;
-	float getDistance(const Trajectory & trajectory1, const Trajectory & trajectory2);
+	float getDistance(const Trajectory & rhs, const Trajectory & lhs);
 };
 
 #endif //SKEET_H

@@ -22,24 +22,22 @@ public:
 
 	void regenerate();  // reset the birds position and give it a random direction. 
 
-	void draw() const { drawCircle(bird, 10); }      // draw bird
+	void kill() { trajectory.kill(); }
 
+	// draw bird
+	void draw(int radius) const;
+	
 	//getters to the trajectory
-	float getX()  { return trajectory.getX(); }
-	float getY()  { return trajectory.getY(); }
-	//needed some getters to compare the distance
-	//between bullet and bird
-
-
+	void getTrajectory(Trajectory & trajectory)
+	{
+		Trajectory(trajectory);
+	}
+	
 private:
 	//Private Member Variables 
-
-	Point bird;               //position of the bird
 
 	Trajectory trajectory; // direction and velocity of bird
 
 	//Private member function
 	void validatePositionProc(const char * file, int line); 
-
-
 };
